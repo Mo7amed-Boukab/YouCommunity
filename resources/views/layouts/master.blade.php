@@ -14,24 +14,14 @@
 
       @yield('main')
 
+      @yield('modal')
+
+      @yield('toast')
+
       @include('partials.footer')
 
- <script>
-     const addEventBtn = document.getElementById('addEventBtn');
-     const eventModal = document.getElementById('eventModal');
-     const closeModal = document.querySelectorAll('.closeModal');
+   
+      @yield('script')
 
-     addEventBtn.addEventListener('click', () => {
-         eventModal.classList.remove('hidden');
-         eventModal.classList.add('flex');
-     });
-
-     closeModal.forEach(btn => {
-         btn.addEventListener('click', () => {
-             eventModal.classList.add('hidden');
-             eventModal.classList.remove('flex'); 
-         });
-     });
- </script>
 </body>
 </html>

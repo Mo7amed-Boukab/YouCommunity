@@ -12,9 +12,10 @@
           <!-- Desktop -->
           <div class="items-center hidden space-x-6 md:flex">
               @auth
-                  <a href="" class="text-gray-600 hover:text-red-600">Home</a>
+                  <a href="{{ route('admin.index') }}" class="text-gray-600 hover:text-red-600">Accueil</a>
+                  <a href="{{ route('admin.events') }}" class="text-gray-600 hover:text-red-600">Mes événements</a>
                   <a href="" class="text-gray-600 hover:text-red-600">Mes RSVP</a>
-                  <a href="" class="text-gray-600 hover:text-red-600">Profil</a>
+                  <a href="" class="text-gray-600 hover:text-red-600">Profile</a>
                   <form method="POST" action="{{ route('logout') }}" class="inline">
                       @csrf
                       <button type="submit" class="px-4 py-2 text-white bg-red-600 rounded hover:bg-red-700">
@@ -48,7 +49,8 @@
 
           <div class="mt-10 space-y-4">
               @auth
-                  <a href="" class="block text-gray-600 hover:text-red-600">Home</a>
+                  <a href="{{ route('admin.index') }}" class= "block text-gray-600 hover:text-red-600">Accueil</a>
+                  <a href="{{ route('admin.events') }}" class="block text-gray-600 hover:text-red-600">Mes événements</a>
                   <a href="" class="block text-gray-600 hover:text-red-600">Mes RSVP</a>
                   <a href="" class="block text-gray-600 hover:text-red-600">Profil</a>
                   <form method="POST" action="{{ route('logout') }}">

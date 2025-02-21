@@ -11,19 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('Events', function (Blueprint $table) {
+        Schema::create('events', function (Blueprint $table) {
             $table->id();
             $table->string('title');
             $table->text('description');
             $table->string('adresse');
             $table->dateTime('date_time');
-            $table->enum('category', ['sport', 'musique', 'education']);
+            $table->string('category');
             $table->integer('max_participation')->unsigned();
+            $table->string('image_path')->nullable();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
-
+   
     /**
      * Reverse the migrations.
      */
