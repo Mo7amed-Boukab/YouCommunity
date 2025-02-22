@@ -27,12 +27,22 @@
             <div class="flex gap-2">
                 <!-- Filtre par date -->
                 <div class="flex-1 lg:w-48 lg:flex-none">
-                    <div class="relative">
+                    <form method="GET" action="{{ route('admin.index') }}">
+                        @if(request('search'))
+                            <input type="hidden" name="search" value="{{ request('search') }}">
+                        @endif
+                        @if(request('category'))
+                            <input type="hidden" name="category" value="{{ request('category') }}">
+                        @endif
+                        
                         <input 
                             type="date" 
+                            name="date"
+                            value="{{ request('date') }}"
+                            onchange="this.form.submit()"
                             class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-red-600 focus:border-transparent"
                         >
-                    </div>
+                    </form>
                 </div>
 
                 <!-- Filtre par catégorie -->

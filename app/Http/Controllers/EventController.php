@@ -18,11 +18,15 @@ class EventController extends Controller
            $query->where('title', 'like', '%' . $request->search . '%');
        }
    
-       if ($request->filled('category')) {
+       elseif ($request->filled('category')) {
            $query->where('category', $request->category);
        }
+       
+       elseif ($request->filled('date')) {
+        $query->whereDate('date_time', $request->date);
+       }
    
-       $events = $query->paginate(6);
+       $events = $query->latest()->paginate(6);
    
        return view('admin', compact('events'));
    }
