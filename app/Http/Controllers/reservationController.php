@@ -28,4 +28,11 @@ class ReservationController extends Controller
 
         return redirect()->back()->with('error', 'Votre réservation a été annulée.');
     }
+
+    public function index()
+    {
+        $reservations = Reservations::where('user_id', Auth::id())->with('event')->get();
+                
+        return view('reservations', compact('reservations'));
+    }
 }

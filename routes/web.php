@@ -20,6 +20,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/events', [EventController::class, 'myEvents'])->name('admin.events');
     Route::put('/events/{event}', [EventController::class, 'update'])->name('events.update');
     Route::delete('/events/{event}', [EventController::class, 'destroy'])->name('events.destroy');
+    Route::get('/reservations', [ReservationController::class, 'index'])->name('reservations.index');
 });
 
 Route::post('/events/{event}/reserve', [ReservationController::class, 'store'])->name('reservations.store');
