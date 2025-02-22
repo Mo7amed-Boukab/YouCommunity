@@ -73,16 +73,14 @@
                      >
                  </div>
                   
-                  <div>
-                      <div class="w-full">
-                          <input 
-                              type="file" 
-                              name="image" 
-                              accept="image/*"
-                              class="w-full text-sm font-semibold text-gray-400 bg-white border rounded cursor-pointer file:cursor-pointer file:border-0 file:py-3 file:px-4 file:mr-4 file:bg-gray-100 file:hover:bg-gray-200 file:text-gray-500" 
-                          />     
-                      </div>
-                  </div>
+                 <div>
+                  <div class="font-[sans-serif] max-w-xl mx-auto">
+                  <input type="file"
+                      name="image"
+                      accept="image/*"
+                      class="w-full text-sm font-semibold text-gray-400 bg-white border rounded cursor-pointer file:cursor-pointer file:border-0 file:py-3 file:px-4 file:mr-4 file:bg-gray-100 file:hover:bg-gray-200 file:text-gray-500">
+                 </div>
+                </div>
               </div>
              </div>
 

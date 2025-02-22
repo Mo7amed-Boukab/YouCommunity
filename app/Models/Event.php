@@ -18,4 +18,10 @@ class Event extends Model
         'image_path',
         'user_id'
     ];
+
+    public function reservations()
+    {
+        return $this->hasMany(Reservations::class);
+    }
+
 }

@@ -65,7 +65,7 @@
 @section('modal')
     @foreach($events as $event)
     <div id="editEventModal_{{ $event->id }}" class="fixed inset-0 z-50 items-center justify-center hidden w-full min-h-screen overflow-y-auto bg-gray-600 bg-opacity-50 modal">
-     <div class="relative w-full max-w-lg bg-white border rounded shadow-xl">
+     <div class="relative w-full max-w-xl bg-white border rounded shadow-xl">
          <button class="absolute text-gray-500 closeEditModal hover:text-gray-700 top-4 right-4 focus:outline-none">
              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -123,7 +123,7 @@
                         </div>
     
                         <div>
-                            <div class="font-[sans-serif] max-w-md mx-auto">
+                            <div class="font-[sans-serif] max-w-xl mx-auto">
                                 <input type="file"
                                     name="image"
                                     accept="image/*"

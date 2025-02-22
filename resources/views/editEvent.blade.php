@@ -1,4 +1,4 @@
-{{-- @section('modal')
+@section('modal')
 <div id="editEventModal_{{ $event->id }}" class="fixed inset-0 z-50 items-center justify-center hidden w-full min-h-screen overflow-y-auto bg-gray-600 bg-opacity-50 modal">
  <div class="relative w-full max-w-lg bg-white border rounded shadow-xl">
      <button class="absolute text-gray-500 closeEditModal hover:text-gray-700 top-4 right-4 focus:outline-none">
@@ -58,13 +58,11 @@
                     </div>
 
                     <div>
-                        <div class="w-full">
-                            <input 
-                                type="file" 
-                                name="image" 
+                        <div class="font-[sans-serif] max-w-md mx-auto">
+                            <input type="file"
+                                name="image"
                                 accept="image/*"
-                                class="w-full text-sm font-semibold text-gray-400 bg-white border rounded cursor-pointer file:cursor-pointer file:border-0 file:py-3 file:px-4 file:mr-4 file:bg-gray-100 file:hover:bg-gray-200 file:text-gray-500" 
-                            />     
+                                class="w-full text-sm font-semibold text-gray-400 bg-white border rounded cursor-pointer file:cursor-pointer file:border-0 file:py-3 file:px-4 file:mr-4 file:bg-gray-100 file:hover:bg-gray-200 file:text-gray-500">
                         </div>
                     </div>
                 </div>
@@ -81,4 +79,4 @@
         </div>
     </div>
 </div>
-@endsection --}}
+@endsection

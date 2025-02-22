@@ -95,9 +95,24 @@
                                <span class="text-sm text-gray-600">{{ $event->date_time }}</span>
                            </div>
                        </div>
-                       <button class="w-full py-2 mt-4 text-white bg-red-600 rounded hover:bg-red-700">
-                           Participer
-                       </button>
+                        @auth
+                           @if ($event->reservations()->where('user_id', auth()->id())->exists())
+                               <form action="{{ route('reservations.destroy', $event->id) }}" method="POST">
+                                   @csrf
+                                   @method('DELETE')
+                                   <button class="w-full py-2 mt-4 text-white bg-gray-600 rounded hover:bg-gray-700">
+                                       Annuler la réservation
+                                   </button>
+                               </form>
+                           @else
+                                <form action="{{ route('reservations.store', $event->id) }}" method="POST">
+                                    @csrf
+                                    <button class="w-full py-2 mt-4 text-white bg-red-600 rounded hover:bg-red-700">
+                                        Participer
+                                    </button>
+                                </form>
+                            @endif
+                        @endauth
                    </div>
                </div>
            @empty
