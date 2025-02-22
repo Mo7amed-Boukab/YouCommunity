@@ -10,11 +10,23 @@ use Illuminate\Support\Facades\Auth;
 class EventController extends Controller
 {
 
-     public function index()
-     {
-         $events = Event::all();
-         return view('admin', compact('events'));
-     }
+   public function index(Request $request)
+   {
+       $query = Event::query();
+   
+       if ($request->filled('search')) {
+           $query->where('title', 'like', '%' . $request->search . '%');
+       }
+   
+       if ($request->filled('category')) {
+           $query->where('category', $request->category);
+       }
+   
+       $events = $query->paginate(6);
+   
+       return view('admin', compact('events'));
+   }
+   
 
     public function create(Request $request)
     {

@@ -8,17 +8,21 @@
             <!-- Barre de recherche -->
             <div class="w-full lg:w-auto lg:flex-1">
                 <div class="relative">
+                 <form method="GET" action="{{ route('admin.index') }}">
                     <input 
                         type="text" 
+                        name="search"
+                        value="{{ request('search') }}" 
                         placeholder="Rechercher un événement..." 
                         class="w-full px-4 py-2 pr-10 border rounded focus:outline-none focus:ring-2 focus:ring-red-600 focus:border-transparent"
                     >
+                   </form> 
                     <span class="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-400 pointer-events-none">
                         <i class="fas fa-search"></i>
                     </span>
                 </div>
             </div>
-
+          
             <!-- Groupe des filtres -->
             <div class="flex gap-2">
                 <!-- Filtre par date -->
@@ -33,15 +37,21 @@
 
                 <!-- Filtre par catégorie -->
                 <div class="flex-1 lg:w-48 lg:flex-none">
-                    <select class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-red-600 focus:border-transparent">
-                        <option value="">Catégorie</option>
-                        <option value="sport">Sport</option>
-                        <option value="musique">Musique</option>
-                        <option value="education">Éducation</option>
-                    </select>
+                    <form method="GET" action="{{ route('admin.index') }}">                        
+                        <select 
+                            name="category" 
+                            onchange="this.form.submit()"
+                            class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-red-600 focus:border-transparent"
+                        >
+                            <option value="">Toutes les catégories</option>
+                            <option value="sport" {{ request('category') == 'sport' ? 'selected' : '' }}>Sport</option>
+                            <option value="musique" {{ request('category') == 'musique' ? 'selected' : '' }}>Musique</option>
+                            <option value="education" {{ request('category') == 'education' ? 'selected' : '' }}>Éducation</option>
+                        </select>
+                    </form>
                 </div>
             </div>
-
+            
             <!-- Groupe des boutons -->
             <div class="flex gap-2">
                 <!-- Bouton de géolocalisation -->
@@ -117,7 +127,7 @@
                </div>
            @empty
                <div class="col-span-3 py-8 text-center">
-                   <p class="text-gray-500">Aucun événement existe pour le moment.</p>
+                   <p class="text-gray-500">Aucun événement existe.</p>
                </div>
            @endforelse
        </div>
