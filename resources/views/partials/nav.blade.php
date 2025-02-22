@@ -15,7 +15,7 @@
                   <a href="{{ route('admin.index') }}" class="text-gray-600 hover:text-red-600">Accueil</a>
                   <a href="{{ route('admin.events') }}" class="text-gray-600 hover:text-red-600">Mes événements</a>
                   <a href="{{ route('reservations.index') }}" class="text-gray-600 hover:text-red-600">Mes Réservations</a>
-                  <a href="" class="text-gray-600 hover:text-red-600">Profile</a>
+                  <a href="{{ route('profile.edit') }}" class="text-gray-600 hover:text-red-600">Profile</a>
                   <form method="POST" action="{{ route('logout') }}" class="inline">
                       @csrf
                       <button type="submit" class="px-4 py-2 text-white bg-red-600 rounded hover:bg-red-700">
@@ -52,7 +52,7 @@
                   <a href="{{ route('admin.index') }}" class= "block text-gray-600 hover:text-red-600">Accueil</a>
                   <a href="{{ route('admin.events') }}" class="block text-gray-600 hover:text-red-600">Mes événements</a>
                   <a href="{{ route('reservations.index') }}" class="block text-gray-600 hover:text-red-600">Mes Réservations</a>
-                  <a href="" class="block text-gray-600 hover:text-red-600">Profile</a>
+                  <a href="{{ route('profile.edit') }}" class="block text-gray-600 hover:text-red-600">Profile</a>
                   <form method="POST" action="{{ route('logout') }}">
                       @csrf
                       <button type="submit" class="block w-full px-4 py-2 text-white bg-red-600 rounded hover:bg-red-700">
