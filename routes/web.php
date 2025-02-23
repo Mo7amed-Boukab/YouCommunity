@@ -13,7 +13,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/EventComm',[HomeController::class,'home']);
+Route::get('/EventPlanner',[HomeController::class,'home'])->name('home.index');
                                                                        
 Route::middleware(['auth'])->group(function () {
     Route::get('/admin', [EventController::class, 'index'])->name('admin.index');

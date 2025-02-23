@@ -76,7 +76,7 @@ class EventController extends Controller
 
     public function myEvents()
     {
-        $events = Event::all()->where('user_id', auth()->id());
+        $events = Event::all()->where('user_id', Auth::id());
         return view('events', compact('events'));
     }
 

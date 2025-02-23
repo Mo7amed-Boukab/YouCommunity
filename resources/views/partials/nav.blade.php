@@ -3,9 +3,9 @@
       <div class="flex items-center justify-between h-16">
        
           <div class="flex items-center">
-              <a href="/EventComm" class="flex items-center space-x-2">
+              <a href="/EventPlanner" class="flex items-center space-x-2">
                   <i class="text-2xl text-red-600 fas fa-calendar-alt"></i>
-                  <span class="text-xl font-bold text-gray-800">EventComm</span>
+                  <span class="text-xl font-bold text-gray-800">EventPlanner</span>
               </a>
           </div>
 
