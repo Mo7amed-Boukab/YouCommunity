@@ -24,4 +24,9 @@ class Event extends Model
         return $this->hasMany(Reservations::class);
     }
 
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
 }

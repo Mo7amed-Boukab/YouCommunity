@@ -1,10 +1,10 @@
 @extends('layouts.master')
 
 @section('main')
-   <div class="px-4 mx-auto mt-8 max-w-7xl">
+  <div class="px-4 mx-auto mt-8 max-w-7xl">
     <div class="p-4 bg-white rounded shadow">
         <!-- Conteneur principal -->
-        <div class="flex flex-col gap-4 lg:flex-row lg:items-center">
+        <div class="flex flex-col w-full gap-4 lg:flex-row lg:items-center">
             <!-- Barre de recherche -->
             <div class="w-full lg:w-auto lg:flex-1">
                 <div class="relative">
@@ -65,12 +65,12 @@
             <!-- Groupe des boutons -->
             <div class="flex gap-2">
                 <!-- Bouton de géolocalisation -->
-                <button 
+                {{-- <button 
                     class="flex items-center justify-center flex-1 gap-2 px-4 py-2 text-gray-700 transition bg-gray-100 rounded lg:flex-none hover:bg-gray-200 group"
                 >
                     <i class="text-red-500 fas fa-map-marker-alt group-hover:animate-bounce"></i>
                     <span>À proximité</span>
-                </button>
+                </button> --}}
 
                 <!-- Bouton d'ajout d'événement -->
                 <button 
@@ -115,24 +115,32 @@
                                <span class="text-sm text-gray-600">{{ $event->date_time }}</span>
                            </div>
                        </div>
-                        @auth
-                           @if ($event->reservations()->where('user_id', auth()->id())->exists())
-                               <form action="{{ route('reservations.destroy', $event->id) }}" method="POST">
-                                   @csrf
-                                   @method('DELETE')
-                                   <button class="w-full py-2 mt-4 text-white bg-gray-600 rounded hover:bg-gray-700">
-                                       Annuler la réservation
-                                   </button>
-                               </form>
-                           @else
-                                <form action="{{ route('reservations.store', $event->id) }}" method="POST">
-                                    @csrf
-                                    <button class="w-full py-2 mt-4 text-white bg-red-600 rounded hover:bg-red-700">
-                                        Participer
-                                    </button>
-                                </form>
-                            @endif
-                        @endauth
+                       @auth                            
+                          <div class="flex gap-2">
+                           @if ($event->reservations()->where('user_id', auth()->id())->exists())                                
+                               <form action="{{ route('reservations.destroy', $event->id) }}" method="POST" class="flex-1">                                    
+                                   @csrf                                    
+                                   @method('DELETE')                                    
+                                   <button class="w-full h-10 py-2 mt-4 text-white bg-yellow-500 rounded hover:bg-yellow-600">                                        
+                                       Annuler la réservation                                    
+                                   </button>                                
+                               </form>                            
+                           @else                                 
+                               <form action="{{ route('reservations.store', $event->id) }}" method="POST" class="flex-1">                                     
+                                   @csrf                                     
+                                   <button class="w-full h-10 py-2 mt-4 text-white bg-red-600 rounded hover:bg-red-700">                                         
+                                       Participer                                     
+                                   </button>                                 
+                               </form>                             
+                           @endif
+                           <button 
+                               onclick="openCommentModal({{ $event->id }})" 
+                               class="flex-1 h-10 py-2 mt-4 text-white bg-gray-600 rounded hover:bg-gray-700"
+                           >
+                             Commentaires
+                           </button>
+                       </div>                   
+                       @endauth    
                    </div>
                </div>
            @empty
@@ -145,6 +153,7 @@
 @endsection
 
 @include('addEvent')
+@include('comments')
 
 @section('toast')
     @if (session('success'))
@@ -216,7 +225,15 @@
             eventModal.classList.remove('flex'); 
         });
     });
+    
+    function openCommentModal(modalId) {
+     document.getElementById(modalId).classList.remove('hidden');
+    }
 
+    function closeCommentModal(modalId) {
+     document.getElementById(modalId).classList.add('hidden');
+    }
+    
     function closeToast(id) {
             const toast = document.getElementById(id);
             if (toast) {
