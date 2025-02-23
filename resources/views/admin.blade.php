@@ -147,8 +147,13 @@
                <div class="col-span-3 py-8 text-center">
                    <p class="text-gray-500">Aucun événement existe.</p>
                </div>
-           @endforelse
+               
+           @endforelse        
        </div>
+       <div class="mt-8">
+           {{ $events->links()}}
+       </div>
+      
    </div>
 @endsection
 
