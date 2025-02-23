@@ -1,4 +1,4 @@
-@foreach($events as $event):
+@foreach($events as $event)
 <div id="{{ $event->id }}" class="fixed inset-0 z-50 flex items-center justify-center hidden w-full min-h-screen bg-gray-600 bg-opacity-50 modal">
  <div class="relative w-full max-w-lg bg-white border rounded shadow-xl">
      <button 
